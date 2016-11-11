@@ -18,7 +18,7 @@ var categories = require('./routes/categorie/categories');
 
 var app = express();
 
-mongoose.connect('localhost:27017/shopping');
+mongoose.connect('mongodb://localhost/shopping');
 require('./config/passport');
 
 
