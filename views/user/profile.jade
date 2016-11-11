@@ -1,0 +1,19 @@
+extends ../layout
+
+block header
+  include ../partial/header
+block content 
+    h5 Orders
+    .row
+      for order in orders
+        .col.s12.l4
+          .card-panel
+            for item in order.items
+              div: b.pink-text #{item.item.title} 
+              div: b Quantity: #{item.qty}
+              div: b price unit: #{item.price} $
+              hr
+            .flow-text total: #{order.cart.totalPrice} $
+
+block footer
+  include ../partial/footer

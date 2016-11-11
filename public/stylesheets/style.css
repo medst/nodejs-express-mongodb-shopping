@@ -1,0 +1,74 @@
+.dropd {
+    position: relative;
+    display: inline-block;
+}
+
+body{
+    padding: 15px;
+    padding-top: 0;
+}
+
+.search-wrapper{
+    box-shadow: none !important;
+    display: inline;
+}
+
+.dropdown-cont {
+    display: none;
+    color: black ;
+    background: white ;
+    position: absolute;
+    top:125px;
+    min-width: 728px;
+    border: 2px solid black;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1000;
+}
+
+.header{
+    position: relative;
+}
+
+.dropd:hover{
+    background: black ;
+    color:white !important;
+}    
+
+.verse{
+    background: black ;
+    color:white !important;
+}
+
+.verse-red{
+    background: black ;
+    color:red !important;
+}
+
+.navigation{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.navigation > li{
+    display: inline;
+}
+.navigation > li > a{
+    text-align: center;
+    padding: 10px 16px;
+    text-decoration: none;
+}
+.bor{
+    border: 2px solid black;
+    text-align: center;
+}
+
+.card .card-content .card-title {
+    line-height: 20px !important;
+}
+.card .card-title {
+    font-size: 15px !important;
+    font-weight: 800 !important;
+}
+

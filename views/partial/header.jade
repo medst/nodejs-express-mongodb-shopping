@@ -1,0 +1,479 @@
+
+
+.header
+    .row
+      .col.s1.hide-on-large-only
+        br
+        a(href="#", data-activates="slide-out").button-collapse: i.material-icons.black-text menu
+      .col.s2.l3
+        h4: a(href='/',class='black-text') Shopina
+      .col.s3.l3.hide-on-med-and-down
+        .search-wrapper.card
+          row
+            .col.l11: input#search(style='padding-top:0px', required)
+            .col.l1
+              br
+              i.material-icons search
+      .col.s3.l3.hide-on-med-and-down
+        br
+        if !login
+          div: a.waves-effect.waves-light.btn.right(href='/u/signin').white-text.pink Sign In/Join
+        else
+          div: a.waves-effect.waves-light.btn.right(href='/u/logout').white-text.pink LogOut
+          div: a.waves-effect.waves-light.btn.right(href='/u/profile').white-text.green Profile
+      .col.s7.l3.right
+        br
+        #badge.badge.right.green-text 
+          if session.cart != null
+            |#{session.cart.totalQty}
+          else
+            |0
+        a(href='/cart'): span: i.material-icons.right.green-text shopping_cart
+        span: i.material-icons.right.red-text favorite
+        span.hide-on-large-only: a(href='/u/signin'): i.material-icons.right person
+        span.hide-on-med-and-down: i.material-icons.right search
+        ul#slide-out.side-nav
+          if login
+            li: a(href="/u/logout") Logout
+          li: div.divider
+          li: a.subheader Menu
+          li: a.waves-effect(href="#!") NEW IN
+          li: a.waves-effect(href="#!") WOMENS
+          li: a.waves-effect(href="#!") MENS
+          li: a.waves-effect(href="#!") KIDS
+          li: a.waves-effect(href="#!") GIFTS
+          li: a.waves-effect(href="#!") INSPIRE ME
+          li: a.waves-effect(href="#!") SALES
+      div.hide-on-med-and-down.col.s12(style="margin:auto;flex-wrap: wrap;display: flex;")
+        ul(class='navigation', style="margin:auto")
+          li: a#dr1.flow-text(href='#', style="color:black").dropd NEW IN
+          li: a#dr2.flow-text(href='#', style="color:black").dropd WOMENS
+          li: a#dr3.flow-text(href='#', style="color:black").dropd MENS
+          li: a#dr4.flow-text(href='#', style="color:black").dropd KIDS
+          li: a#dr5.flow-text(href='#', style="color:black").dropd GIFTS
+          li: a#dr.flow-text(href='#', style="color:black").dropd INSPIRE ME
+          li: a#dr6.flow-text(href='#', style="color:black").dropd.red-text SALES
+
+      #drc1.dropdown-cont.hide-on-med-and-down.col.s12
+        .row
+          .col.l3
+            .blod.black-text(style='font-weight: 900;padding-top:10px;padding-bottom:15px;') WOMENS NEW IN
+            div: a(href="#").black-text New In Clothing
+            div: a(href="#").black-text New In Dresses
+            div: a(href="#").black-text New In Shoes
+            div: a(href="#").black-text New In Accessories
+            div: a(href="#").black-text Back In Stock
+            div: a(href="#").black-text Style Steals
+            div: a(href="#").pink-text 1000s of Dresses £15 & Under*
+          .col.l3
+            .blod.black-text(style='font-weight: 900;padding-top:10px;padding-bottom:15px;') NEWEST COLLECTION 
+            div: a(href="#").black-text Maternity
+            div: a(href="#").black-text Jordyn Woods- Shop The Collection
+            div: a(href="#").pink-text WeAreUs – Shop The Campaign
+            div: a(href="#").black-text AW16 Trends Guide
+            div: a(href="#").black-text STYLEFIX MAGAZINE
+            .black-text(style='font-weight: 900;padding-top:20px;padding-bottom:5px;'): a(href='#').black-text shopina PREMIER - £9.99
+            .black-text(style='font-weight: 900;padding-top:20px;padding-bottom:5px;'): a(href='#').black-text NEW: PRECISE DELIVERY
+          .col.l3
+            .blod(style='font-weight: 900;padding-top:10px;padding-bottom:15px;')
+              span.black-text MENS NEW IN - 
+              span.red-text 50% OFF
+            div: a(href="#").black-text All New In
+            div: a(href="#").black-text Back In Stock
+            .black-text(style='font-weight: 900;padding-top:15px;padding-bottom:15px;') NEWEST COLLECTION
+            div: a(href="#").black-text Quincy
+            div: a(href="#").black-text THE MANUAL MAGAZINE
+          .col.l3
+            .blod.black-text(style='font-weight: 900;padding-top:10px;padding-bottom:15px;') KIDS NEW IN
+            div: a(href="#").black-text All Girls
+            div: a(href="#").black-text All Boys
+            div: a(href="#").black-text Halloween
+            br
+            a(href='#'): img.responsive-img(src='/images/sales', width='60%')
+      #drc2.dropdown-cont.hide-on-med-and-down.col.s12
+        .row
+          .col.l2
+            .blod.black-text(style='font-weight: 900;padding-top:10px;padding-bottom:15px;') CLOTHING
+            div: a(href="#").black-text New In
+            div: a(href="#").black-text Dresses
+            div: a(href="#").black-text Party Dresses
+            div: a(href="#").black-text Maxi Dresses
+            div: a(href="#").black-text Maxi Skirts
+            div: a(href="#").black-text Tops
+            div: a(href="#").black-text Bodysuits
+            div: a(href="#").black-text Shirts & Blouses
+            div: a(href="#").black-text Suits & Separates
+            div: a(href="#").black-text Knitwear
+            div: a(href="#").black-text Playsuits & Jumpsuits
+            div: a(href="#").black-text Coats & Jackets
+            div: a(href="#").black-text Bomber Jackets
+            div: a(href="#").black-text Sportswear
+            div: a(href="#").black-text Swimwear & Beachwear
+            div: a(href="#").black-text Skirts
+            div: a(href="#").black-text Shorts
+          .col.l2
+            div: a(href="#").black-text Trousers & Leggings
+            div: a(href="#").black-text Jeans
+            div: a(href="#").black-text Denim
+            div: a(href="#").black-text Co-ord Sets
+            div: a(href="#").black-text Lingerie & Nightwear
+            div: a(href="#").black-text Onesies & Loungewear
+            div: a(href="#").black-text Style Steals
+            div: a(href="#").pink-text 1000s of Dresses £15 & Under*
+            .blod(style='font-weight: 900;padding-top:10px;padding-bottom:15px;'): a(href='#').black-text NEW: Maternity
+            div: a(href="#").black-text Plus Size & Curve
+            div: a(href="#").black-text Petite
+            div: a(href="#").black-text Tall
+            .blod(style='font-weight: 900;padding-top:10px;padding-bottom:15px;'): a(href='#').black-text boohoo PREMIER - £9.99
+            .blod(style='font-weight: 700;padding-top:10px;padding-bottom:15px;'): a(href='#').black-text NEW: PRECISE DELIVERY
+            .blod(style='font-weight: 900;padding-top:10px;padding-bottom:15px;'): a(href='#').red-text SALE
+          .col.l2
+            .blod.black-text(style='font-weight: 900;padding-top:10px;padding-bottom:15px;') SHOES
+            div: a(href="#").black-text All Shoes
+            div: a(href="#").black-text High Heels
+            div: a(href="#").black-text Boots
+            div: a(href="#").black-text Sandals
+            div: a(href="#").black-text Flats
+            div: a(href="#").black-text Trainers
+            .blod.black-text(style='font-weight: 900;padding-top:10px;padding-bottom:15px;') ACCESSORIES
+            div: a(href="#").black-text All Accessories
+            div: a(href="#").black-text Jewellery
+            div: a(href="#").black-text Bags
+            div: a(href="#").black-text Sunglasses
+            div: a(href="#").black-text Hair Accessories
+            div: a(href="#")
+              span.black-text  Beauty – 
+              span.pink-text  3 for 2
+            div: a(href="#").black-text Gifts
+            div: a(href="#").black-text Tights & Socks
+            div: a(href="#").black-text Belts
+            div: a(href="#").black-text Scarves, Hats & Gloves 
+          .col.l2
+            .blod.black-text(style='font-weight: 900;padding-top:10px;padding-bottom:15px;') shpina BRANDS
+            div: a(href="#").black-text Our brands covered. Find your favourite!
+            div: a(href="#").black-text shopina Basics
+            div: a(href="#").black-text shopina Night
+            div: a(href="#").black-text shopina Blue
+            div: a(href="#").black-text shopina Boutique
+            div: a(href="#").black-text shopina Fit
+            .blod.black-text(style='font-weight: 900;padding-top:10px;padding-bottom:15px;') GIFT VOUCHERS
+            br
+            a(href='#'): img.responsive-img(src='/images/sales')
+          .col.l2
+            .blod.black-text(style='font-weight: 900;padding-top:10px;padding-bottom:15px;') SHOPS
+            div: a(href="#").black-text Halloween
+            div: a(href="#")
+              span.black-text Back To School - 
+              span.pink-text from £5
+            div: a(href="#").black-text Festival Shop
+            div: a(href="#").black-text Occasionwear
+            div: a(href="#").black-text Editor’s Picks
+            div: a(href="#").black-text Going Out Shop
+            div: a(href="#").black-text Denim Shop
+            div: a(href="#").black-text Work Wear
+            div: a(href="#")
+              span.black-text Holiday Shop – 
+              span.pink-text from £4
+            .blod.black-text(style='font-weight: 900;padding-top:10px;padding-bottom:15px;') GET THE LOOK
+            div: a(href="#").black-text Velvet
+            div: a(href="#").black-text Street Style
+            div: a(href="#").black-text Choker
+            div: a(href="#").black-text Metallics
+          .col.l2
+            .blod(style='font-weight: 900;padding-top:10px;padding-bottom:5px;'): a(href='#').black-text STYLEFIX MAGAZINE
+            .blod.black-text(style='font-weight: 900;padding-top:10px;padding-bottom:15px;') AW16 TRENDS
+            div: a(href="#").black-text AW16 Trends Guide
+            div: a(href="#").black-text Artisan
+            div: a(href="#").black-text Stripes
+            div: a(href="#").black-text Monochrome
+            div: a(href="#").black-text Utility
+            div: a(href="#").black-text Mademoiselle
+            div: a(href="#").black-text Grunge Girl
+            div: a(href="#").black-text Nordic
+            div: a(href="#").black-text Colour Pop
+            div: a(href="#").black-text Oriental
+            .blod.black-text(style='font-weight: 900;padding-top:10px;padding-bottom:15px;') LATEST CAMPAIGNS
+            div: a(href="#").black-text Jordyn Woods- Shop The Collection
+            div: a(href="#").pink-text WeAreUs – Shop The Campaign
+            div: a(href="#").black-text #myboohoostyle
+      #drc3.dropdown-cont.hide-on-med-and-down.col.s12
+        .row
+          .col.l3
+            .blod(style='font-weight: 900;padding-top:10px;padding-bottom:15px;'): a(href='#')
+              span.black-text CLOTHING - 
+              span.red-text 50% OFF
+            div: a(href="#").black-text New In
+            div: a(href="#").black-text T-Shirts & Vests
+            div: a(href="#").black-text Jumpers & Cardigans
+            div: a(href="#").black-text Hoodies & Sweats
+            div: a(href="#").black-text Coats & Jackets
+            div: a(href="#").black-text Jeans
+            div: a(href="#").black-text Shirts
+            div: a(href="#").black-text Trousers
+            div: a(href="#").black-text Joggers & Tracksuits
+            div: a(href="#").black-text Shorts
+            div: a(href="#").black-text Onesies & Loungewear
+            div: a(href="#")
+              span.black-text Style Steals - 
+              span.red-text from £5
+            div: a(href="#").black-text Multi Packs
+            div: a(href="#").black-text Back In Stock
+            .blod(style='font-weight: 900;padding-top:10px;padding-bottom:15px;'): a(href="#")
+              span.black-text shopina PREMIER - 
+              span.red-text £9.99
+          .col.l3
+            .blod(style='font-weight: 900;padding-top:10px;padding-bottom:5px;'): a(href="#")
+               span.black-text SHOES - 
+               span.red-text 50% OFF
+            .blod(style='font-weight: 900;padding-top:10px;padding-bottom:5px;'): a(href="#")
+               span.black-text ACCESSORIES - 
+               span.red-text 50% OFF
+            .blod(style='font-weight: 900;padding-top:10px;padding-bottom:5px;'): a(href="#").red-text SALE – UP TO 75% OFF
+            br
+            a(href='#'): img.responsive-img(src='/images/sales')
+          .col.l3
+            .blod(style='font-weight: 900;padding-top:10px;padding-bottom:15px;').black-text SHOPINA BRANDS
+            div: a(href="#").black-text Quincy
+            div: a(href="#").black-text shopinaMAN Basics
+            div: a(href="#").black-text shopinaMAN Night
+            div: a(href="#").black-text shopinaMAN Blue
+            div: a(href="#").black-text shopinaMAN Sport
+            .blod(style='font-weight: 900;padding-top:10px;padding-bottom:15px;').black-text SHOPS
+            div: a(href="#").black-text Halloween
+            div: a(href="#").black-text Editor’s Picks
+            div: a(href="#").black-text Holiday Shop
+            div: a(href="#").black-text Festival Shop
+            .blod(style='font-weight: 900;padding-top:10px;padding-bottom:15px;'): a(href="#").black-text THE MANUAL MAGAZINE
+            .blod(style='font-weight: 900;padding-top:10px;padding-bottom:5px;'): a(href="#").black-text GIFT VOUCHERS 
+          .col.l3
+            .blod(style='font-weight: 900;padding-top:10px;padding-bottom:15px;').black-text AW16 TRENDS
+            div: a(href="#").black-text Mens Utility
+            div: a(href="#").black-text Urban Explorer
+            div: a(href="#").black-text Atlantic
+            br
+            a(href='#'): img.responsive-img(src='/images/sales', width='70%')
+      #drc4.dropdown-cont.hide-on-med-and-down.col.s12
+        .row
+          .col.l3
+            .blod(style='font-weight: 900;padding-top:10px;padding-bottom:15px;').black-text GIRLS
+            div: a(href="#").black-text All Girls
+            div: a(href="#").black-text Dresses
+            div: a(href="#").black-text Tops
+            div: a(href="#").black-text Jackets & Coats
+            div: a(href="#").black-text Denim
+            div: a(href="#").black-text Trousers & Leggings
+            div: a(href="#").black-text Sets
+            div: a(href="#").black-text Skirts
+            div: a(href="#").black-text Nightwear
+            div: a(href="#").black-text Shoes
+            div: a(href="#").black-text Accessories
+            div: a(href="#").black-text Halloween
+          .col.l3
+            br
+            a(href='#'): img.responsive-img(src='/images/sales', width='90%')
+          .col.l3
+            .blod(style='font-weight: 900;padding-top:10px;padding-bottom:15px;').black-text BOYS
+            div: a(href="#").black-text All Boys
+            div: a(href="#").black-text Tops
+            div: a(href="#").black-text Knitwear
+            div: a(href="#").black-text Jackets & Coats
+            div: a(href="#").black-text Denim
+            div: a(href="#").black-text Trousers
+            div: a(href="#").black-text Nightwear
+            div: a(href="#").black-text Shoes
+            div: a(href="#").black-text Accessories
+            div: a(href="#").black-text Halloween
+          .col.l3
+            br
+            a(href='#'): img.responsive-img(src='/images/sales', width='90%')
+      #drc5.dropdown-cont.hide-on-med-and-down.col.s12
+        .row
+          .col.l3
+            .blod(style='font-weight: 900;padding-top:10px;padding-bottom:15px;').black-text PARTYWEAR
+            div: a(href="#").black-text Womens Partywear
+            div: a(href="#").black-text Womens Heels
+            div: a(href="#").black-text Womens Accessories
+            div: a(href="#").black-text Mens Partywear
+            div: a(href="#").black-text Kids Partywear
+          .col.l3
+            .blod(style='font-weight: 900;padding-top:10px;padding-bottom:15px;').black-text CHRISTMAS JUMPERS
+            div: a(href="#").black-text Womens Christmas Jumpers
+            div: a(href="#").black-text Mens Christmas Jumpers
+            .blod(style='font-weight: 900;padding-top:10px;padding-bottom:15px;').black-text NIGHTWEAR
+            div: a(href="#").black-text Womens Nightwear
+            div: a(href="#").black-text Mens Nightwear
+            div: a(href="#").black-text Girls Nightwear
+            div: a(href="#").black-text Boys Nightwear
+          .col.l3 
+            .blod(style='font-weight: 900;padding-top:10px;padding-bottom:15px;').black-text GIFT IDEAS
+            div: a(href="#").black-text Gifts for Her
+            div: a(href="#").black-text Gifts for Him
+            div: a(href="#").black-text Gifts £5 & Under
+            div: a(href="#").black-text Gifts £10 & Under
+            div: a(href="#").black-text Novelty Gifts
+            div: a(href="#").black-text Beauty Gifts
+          .col.l3 
+            br
+            a(href='#'): img.responsive-img(src='/images/sales', width='90%')
+      #drc6.dropdown-cont.hide-on-med-and-down.col.s12
+        .row
+          .col.l3
+            .blod(style='font-weight: 900;padding-top:10px;padding-bottom:15px;').black-text WOMENS SALE
+            div: a(href="#").black-text All Sale
+            div: a(href="#").black-text New to Sale
+            div: a(href="#").black-text Dresses
+            div: a(href="#").black-text Tops
+            div: a(href="#").black-text Playsuits & Jumpsuits
+            div: a(href="#").black-text Skirts
+            div: a(href="#").black-text Coats & Jackets
+            div: a(href="#").black-text Knitwear
+            div: a(href="#").black-text Lingerie & Nightwear
+            div: a(href="#").black-text Co-ord sets
+            div: a(href="#").black-text Jeans
+            div: a(href="#").black-text Denim
+            div: a(href="#").black-text Petite
+            div: a(href="#").black-text Plus Size & Curve
+            div: a(href="#").black-text Tall
+            div: a(href="#").black-text Trousers
+            div: a(href="#").black-text Leggings
+            div: a(href="#").black-text Shorts
+            div: a(href="#").black-text Swimwear
+            div: a(href="#").black-text shopina Boutique
+          .col.l3 
+            .blod(style='font-weight: 900;padding-top:10px;padding-bottom:15px;').black-text SHOES & ACCESSORIES
+            div: a(href="#").black-text Shoes
+            div: a(href="#").black-text Accessories
+            .blod(style='font-weight: 900;padding-top:10px;padding-bottom:15px;').black-text OFFERS
+            div: a(href="#").red-text Last Chance To Buy
+            div: a(href="#").red-text £5 & Under
+            div: a(href="#").red-text £10 & Under
+            div: a(href="#").red-text £20 & Under
+            .blod(style='font-weight: 900;padding-top:10px;padding-bottom:15px;').black-text SHOP BY SIZE
+            div: a(href="#").black-text Size 4
+            div: a(href="#").black-text Size 6
+            div: a(href="#").black-text Size 8
+            div: a(href="#").black-text Size 10
+            div: a(href="#").black-text Size 12
+            div: a(href="#").black-text Size 14
+            div: a(href="#").black-text Size 16
+            div: a(href="#").black-text Size 18
+            div: a(href="#").black-text Size 20
+            div: a(href="#").black-text Size 22
+            div: a(href="#").black-text Size 24
+          .col.l3
+            .blod(style='font-weight: 900;padding-top:10px;padding-bottom:15px;')
+              span.black-text MENS SALE - 
+              span.red-text UP TO 75% OFF
+            div: a(href="#").black-text All Sale
+            div: a(href="#").black-text T-Shirts & Vests
+            div: a(href="#").black-text Jumpers & Cardigans
+            div: a(href="#").black-text Jeans
+            div: a(href="#").black-text Hoodies & Sweats
+            div: a(href="#").black-text Shorts
+            div: a(href="#").black-text Trousers
+            div: a(href="#").black-text Shirts
+            div: a(href="#").black-text Coats & Jackets
+            .blod(style='font-weight: 900;padding-top:10px;padding-bottom:15px;')
+              span.black-text SHOES & ACCESSORIES - 
+              span.red-text UP TO 75% OFF
+            div: a(href="#").black-text Shoes
+            div: a(href="#").black-text Accessories 
+          .col.l3 
+            br
+            a(href='#'): img.responsive-img(src='/images/sales', width='90%')
+       
+
+    script.
+      $(document).ready(function(){
+          $(".button-collapse").sideNav();
+          $("#dr1").hover(function(){
+            $("#drc1").show();
+          });
+          $("#dr1").mouseleave(function(){
+            $("#drc1").hide();
+          });
+          $("#drc1").mouseenter(function(){
+            $("#drc1").show();
+            $("#dr1").addClass("verse");
+          });
+          $("#drc1").mouseleave(function(){
+            $("#drc1").hide();
+            $("#dr1").removeClass("verse");
+          });
+
+          $("#dr2").hover(function(){
+            $("#drc2").show();
+          });
+          $("#dr2").mouseleave(function(){
+            $("#drc2").hide();
+          });
+          $("#drc2").mouseenter(function(){
+            $("#drc2").show();
+            $("#dr2").addClass("verse");
+          });
+          $("#drc2").mouseleave(function(){
+            $("#drc2").hide();
+            $("#dr2").removeClass("verse");
+          });
+
+          $("#dr3").hover(function(){
+            $("#drc3").show();
+          });
+          $("#dr3").mouseleave(function(){
+            $("#drc3").hide();
+          });
+          $("#drc3").mouseenter(function(){
+            $("#drc3").show();
+            $("#dr3").addClass("verse");
+          });
+          $("#drc3").mouseleave(function(){
+            $("#drc3").hide();
+            $("#dr3").removeClass("verse");
+          });
+
+          $("#dr4").hover(function(){
+            $("#drc4").show();
+          });
+          $("#dr4").mouseleave(function(){
+            $("#drc4").hide();
+          });
+          $("#drc4").mouseenter(function(){
+            $("#drc4").show();
+            $("#dr4").addClass("verse");
+          });
+          $("#drc4").mouseleave(function(){
+            $("#drc4").hide();
+            $("#dr4").removeClass("verse");
+          });
+
+          $("#dr5").hover(function(){
+            $("#drc5").show();
+          });
+          $("#dr5").mouseleave(function(){
+            $("#drc5").hide();
+          });
+          $("#drc5").mouseenter(function(){
+            $("#drc5").show();
+            $("#dr5").addClass("verse");
+          });
+          $("#drc5").mouseleave(function(){
+            $("#drc5").hide();
+            $("#dr5").removeClass("verse");
+          });
+
+          $("#dr6").hover(function(){
+            $("#drc6").show();
+            $("#dr6").css("color", "red !important");
+          });
+          $("#dr6").mouseleave(function(){
+            $("#drc6").hide();
+          });
+          $("#drc6").mouseenter(function(){
+            $("#drc6").show();
+            $("#dr6").addClass("verse-red");
+          });
+          $("#drc6").mouseleave(function(){
+            $("#drc6").hide();
+            $("#dr6").removeClass("verse-red");
+          });
+      });

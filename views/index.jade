@@ -1,0 +1,96 @@
+extends layout
+
+block header
+  include partial/header
+
+block content
+  if(success)
+    .card-panel.green.white-text
+      b.center #{success}
+  .bor
+    span: b.bold this offer end at :
+    span 12:00 AM
+  br
+  .slider
+    ul.slides
+      li
+        img.img-responsive(src="images/f.jpg")
+        .caption.center-align
+          h3 This is our big Tagline!
+          h5.light.grey-text.text-lighten-3 Here's our small slogan
+      li
+        img.img-responsive(src="images/cat.jpg")
+        .caption.left-align
+          h3 This is our big Tagline!
+          h5.light.grey-text.text-lighten-3 Here's our small slogan
+      li
+        img.img-responsive(src="images/f.jpg")
+        .caption.right-align
+          h3 This is our big Tagline!
+          h5.light.grey-text.text-lighten-3 Here's our small slogan
+      li
+        img.img-responsive(src="images/cat.jpg")
+        .caption.center-align
+          h3 This is our big Tagline!
+          h5.light.grey-text.text-lighten-3 Here's our small slogan
+  .row
+    .col.s12.m6.l4
+       .card
+          .card-image
+              img(src="images/sales").responsive-img
+              span.card-title Card Title
+          .card-content
+              p I am a very simple card. I am good at containing small bits of information.
+              | I am convenient because I require little markup to use effectively
+          .card-action
+              a(href="#") This is a link
+     .col.s12.m6.l4
+       .card
+          .card-image
+              img(src="images/sales").responsive-img
+              span.card-title Card Title
+          .card-content
+              p I am a very simple card. I am good at containing small bits of information.
+              | I am convenient because I require little markup to use effectively
+          .card-action
+              a(href="#") This is a link
+      .col.s12.m6.l4
+       .card
+          .card-image
+              img(src="images/sales").responsive-img
+              span.card-title Card Title
+          .card-content
+              p I am a very simple card. I am good at containing small bits of information.
+              | I am convenient because I require little markup to use effectively
+          .card-action
+              a(href="#") This is a link
+    .row
+      .col.s12.m6.l4
+        .card
+            .card-image
+                img(src="images/sales")
+      .col.s12.m6.l4
+        .card
+            .card-image
+                img(src="images/sales")
+      .col.s12.m6.l4
+        .card
+            .card-image
+                a(href=''): img(src="images/sales")
+    hr
+    .center-align SOCIAL ACOUNT FAB BUTTONS
+    hr
+    .center-align SHOPINA BRANDS CATEGORIES
+    hr
+  script.
+    $('.slider').slider({full_width: true, interval: 5000});
+block footer
+  include partial/footer
+
+
+
+  
+
+
+  
+    

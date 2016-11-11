@@ -1,0 +1,46 @@
+extends ../layout
+
+block header
+  include ../partial/header
+block content
+  .container: .row
+        .col.s12.m8.l6.offset-m2.offset-l3
+            .card-panel.pink.white-text
+              h3.center #{total} $
+            - var hide = ""
+            if noError
+                - hide = "hide"
+            .card-panel.red-text.error(class='#{hide}')
+              div: b.center #{error}
+              div: b.center.payment-errors
+            .card-panel
+                .row
+                  form(method='post', action='/checkout')
+                    .input-field.col.s12
+                        input#name.validate(type="text", name='name')
+                        label(for="name") Name
+                    .input-field.col.s12
+                        input#address.validate(type="text", name='address')
+                        label(for="address") Address
+                    .input-field.col.s12
+                        input#cardname.validate(type="text", name='cardname')
+                        label(for="cardname") Card Holder Name
+                    .input-field.col.s12
+                        input#cardnumber.validate(type="number", name='cardnumber')
+                        label(for="cardnumber") Credit Card Number
+                    .input-field.col.s6
+                        input#month.validate(type="number", min='1', max='12', name='month')
+                        label(for="month") Expiration Month
+                    .input-field.col.s6
+                        input#year.validate(type="number", min='2016', max='2045', name='year')
+                        label(for="year") Expiration Year
+                    .input-field.col.s12
+                        input#cvc.validate(type="number", name='cvc')
+                        label(for="cvc") CVC
+                    input(hidden, name='_csrf', value='#{csrfToken}')
+                    button(type='submit').waves-effect.waves-light.btn.submit Buy Now
+  script(type="text/javascript", src="https://js.stripe.com/v2/")
+  script(type="text/javascript", src="/javascripts/checkout.js")
+
+block footer
+  include ../partial/footer

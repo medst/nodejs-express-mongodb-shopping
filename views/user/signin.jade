@@ -1,0 +1,29 @@
+extends ../layout
+
+block header
+  include ../partial/header
+block content 
+    .container: .row
+        .col.s12.m8.l6.offset-m2.offset-l3
+            .card-panel
+                .row
+                    if hasErrors
+                     .red.white-text
+                       for message in messages
+                         p= message
+                .row
+                  form(method='post', action='/u/signin')
+                    .input-field.col.s12
+                        input#email.validate(type="email", name='email')
+                        label(for="password") Email
+                    .input-field.col.s12
+                        input#password.validate(type="password", name='password')
+                        label(for="password") Password
+                    input(hidden, name='_csrf', value='#{csrfToken}')
+                    .col.s6: button(type='submit').waves-effect.waves-light.btn LOGIN
+                    .col.s6: a.waves-effect.waves-light.btn.right(href='/u/signup') SIGNUP
+                a(href='#') Forgot password?
+
+
+block footer
+  include ../partial/footer

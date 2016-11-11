@@ -1,0 +1,47 @@
+extends ../layout
+
+block header
+  include ../partial/header
+block content
+    row
+      .col.l6.m7.s12
+        if products != null
+          .collection.with-header
+            .collection-header.flow-text Cart
+              a(href='/checkout').pink-text.right CHECKOUT
+            for product in products
+              div.collection-item.row
+                .col.l2.s5: img(src="#{product.item.images[0].path}", width='80%', height='200px', style='border: 2px pink bold')
+                .col.l4.s7
+                  .flow-text.pink-text #{product.item.title}
+                  br
+                  .flow-text.pink-text unit price :  #{product.item.price} $
+                  br
+                  .flow-text.pink-text(style='display:inline;') quantity : 
+                  input(class='qty', id='#{product.item._id}', type='number', value='#{product.qty}', min='0', style='width:40px;display:inline;') 
+                  br
+                  a(href='/cart/remove/#{product.item._id}').waves-effect.waves-light.btn remove
+            div.collection-item
+              h5#price Total: #{totalPrice} $
+          a(href='/checkout').waves-effect.waves-light.btn Checkout
+        else
+          .card-panel.teal.lighten-2.flow-text THERE IS NO ITEMS
+    script.
+        $('.qty').change(function(){
+            var num = $(this).val();
+            var id = $(this).attr('id');
+            var badge = parseInt($('#badge').text());
+            if(parseInt(num) >= 0)
+              $.get('/cart/change/'+id+'/'+num, function(data, status){
+                console.log(status)
+                if(status == 'success')
+                  if(data.status == 'ok'){
+                    $('#badge').text(data.data.totalQty);
+                    $('#price').text('Total: '+data.data.totalPrice+' $');
+                  }
+              });
+        });
+
+
+block footer
+  include ../partial/footer

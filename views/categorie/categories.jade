@@ -1,0 +1,346 @@
+extends ../layout
+
+block header
+  include ../partial/header
+block content
+  if state
+    .row
+        .col.l3.m3.hide-on-small-only
+          form
+            .flow-text.center
+                a.white-text.pink.waves-effect.waves-block.waves-light#filter Click to Filter
+            br
+            div: b SIZES
+            row
+              .col.s6.size1
+                input(type="checkbox" id="test4").size
+                label(for="test4") 4
+                br
+                input(type="checkbox" id="test6").size
+                label(for="test6") 6
+                br
+                input(type="checkbox" id="test8").size
+                label(for="test8") 8
+                br
+                input(type="checkbox" id="test10").size
+                label(for="test10") 10
+                br
+                input(type="checkbox" id="test12").size
+                label(for="test12") 12
+                br
+                input(type="checkbox" id="test14").size
+                label(for="test14") 14
+                br
+                input(type="checkbox" id="test16").size
+                label(for="test16") 16
+                br
+              .col.s6.size2
+                input(type="checkbox" id="test18").size
+                label(for="test18") 18
+                br
+                input(type="checkbox" id="test20").size
+                label(for="test20") 20
+                br
+                input(type="checkbox" id="test22").size
+                label(for="test22") 22
+                br
+                input(type="checkbox" id="test24").size
+                label(for="test24") 24
+                br
+                input(type="checkbox" id="testM").size
+                label(for="testM") M
+                br
+                input(type="checkbox" id="testML").size
+                label(for="testML") ML
+                br
+                input(type="checkbox" id="testLLL").size
+                label(for="testLLL") LLL
+                br
+            div: b PRICE
+            #range
+            br
+            div: b COLOR
+            row
+              .col.s12.clr
+                input(type="checkbox" id="green").color
+                label(for="green") green
+                br
+                input(type="checkbox" id="red").color
+                label(for="red") red
+                br
+                input(type="checkbox" id="black").color
+                label(for="black") black
+                br
+                input(type="checkbox" id="white").color
+                label(for="white") white
+                br
+                input(type="checkbox" id="pink").color
+                label(for="pink") pink
+                br
+                input(type="checkbox" id="grey").color
+                label(for="grey") grey
+                br
+                input(type="checkbox" id="blue").color
+                label(for="blue") blue
+                br
+            div: b STYLE
+            row
+              .col.s12.style
+                input(name="occasion" type="radio" id="All").occasion
+                label(for="All") All
+                br
+                input(name="occasion" type="radio" id="Work-Wear").occasion
+                label(for="Work-Wear") Work Wear
+                br
+                input(name="occasion" type="radio" id="CHRISTMAS-JUMPERS").occasion
+                label(for="CHRISTMAS-JUMPERS") CHRISTMAS JUMPERS
+                br
+                input(name="occasion" type="radio" id="NIGHTWEAR").occasion
+                label(for="NIGHTWEAR") NIGHTWEAR
+                br
+                input(name="occasion" type="radio" id="Partywear").occasion
+                label(for="Partywear") Partywear
+                br
+                input(name="occasion" type="radio" id="Halloween").occasion
+                label(for="Halloween") Halloween
+                br
+        .col.l9.m9.s12
+            .row#list
+              for product in products
+                .col.l3.m6
+                    .card
+                        .card-image.waves-effect.waves-block.waves-light
+                            img(id='color', src='#{product.images[0].path}', height='300px')
+                        .card-content
+                            .card-title.grey-text.text-darken-4
+                                |#{product.title}
+                            i.material-icons.right.waves-effect.waves-block.waves-light.red-text favorite
+                            p(style='margin-bottom:10px'): b.blue-text #{product.price} $
+                            for c in product.images
+                                i.material-icons.right.waves-effect.waves-block.waves-light(id='#{c.path}', class='change #{c.color} #{c.color}-text') stop
+                        .card-action
+                            a.btn-floating.btn-small.waves-effect.waves-light.pink: i.material-icons share
+                            a.btn-floating.btn-small.waves-effect.waves-light.right(id='#{product._id}' class='addtocart'): i.material-icons shopping_cart
+                        
+            .row
+                h4.load.center-align Load More..
+                
+    script.
+        function getParameterByName(name, url) {
+            if (!url) {
+            url = window.location.href;
+            }
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+        $(document).ready(function(){
+            let link = $(location).attr('href');
+            var slider = document.getElementById('range');
+            if(link.indexOf('&size') > -1){
+                let size = getParameterByName('size');
+                let color = getParameterByName('color');
+                let price = getParameterByName('price');
+                let occasion = getParameterByName('occasion');
+                let sizes = [];
+                let colors = [];
+                let prices = [];
+                if(size.length>0){
+                    sizes = size.split('|');
+                    for(let i=0;i<sizes.length;i++)
+                        $('#test'+sizes[i]).attr('checked', true);
+                }
+                if(color.length>0){
+                    colors = color.split('|');
+                    for(let i=0;i<colors.length;i++)
+                        $('input#'+colors[i]).attr('checked', true);
+                }
+                if(occasion.length>0){
+                    let style = $('.style').children('.occasion');
+                    for(var i=0;i<style.length;i++)
+                        if($(style[i]).next().text() == occasion){
+                            $(style[i]).attr('checked', true);
+                            break;
+                        }
+                }
+                if(price.length>0){
+                    prices = price.split('|');
+                    noUiSlider.create(slider, {
+                        start: [parseInt(prices[0]), parseInt(prices[1])],
+                        connect: true,
+                        step: 1,
+                        range: {
+                            'min': 0,
+                            'max': 100
+                        },
+                        format: wNumb({
+                            decimals: 0
+                        })
+                    });
+                }
+                else
+                    noUiSlider.create(slider, {
+                        start: [0, 100],
+                        connect: true,
+                        step: 1,
+                        range: {
+                            'min': 0,
+                            'max': 100
+                        },
+                        format: wNumb({
+                            decimals: 0
+                        })
+                    });
+            }
+            else
+                noUiSlider.create(slider, {
+                    start: [0, 100],
+                    connect: true,
+                    step: 1,
+                    range: {
+                        'min': 0,
+                        'max': 100
+                    },
+                    format: wNumb({
+                    decimals: 0
+                    })
+                });
+            let size = [];
+            let color = [];
+            let occasion = '&occasion=';
+            let sizeString = '&size=';
+            let colorString = '&color=';
+            let price = '&price=';
+            let children1 = $('.size1').children('.size');
+            let children2 = $('.size2').children('.size');
+            let clr = $('.clr').children('.color');
+            let style = $('.style').children('.occasion');
+            for(var i=0;i<children1.length;i++)
+                if($(children1[i]).is(":checked"))
+                    size.push($(children1[i]).next().text());
+            for(var i=0;i<children2.length;i++)
+                if($(children2[i]).is(":checked"))
+                    size.push($(children2[i]).next().text());
+            for(var i=0;i<clr.length;i++)
+                if($(clr[i]).is(":checked"))
+                    color.push($(clr[i]).next().text());
+            for(var i=0;i<style.length;i++)
+                if($(style[i]).is(":checked")){
+                    occasion = '&occasion='+$(style[i]).next().text();
+                    break;
+                }
+            $('.size').change(function(){
+                let s = $(this).next().text();
+                let a = size.indexOf(s);
+                if(a > -1)
+                    size.splice(a, 1);
+                else
+                    size.push(s);
+            });
+            $('.color').change(function(){
+                let c = $(this).next().text();
+                let a = color.indexOf(c);
+                if(a > -1)
+                    color.splice(a, 1);
+                else
+                    color.push(c);
+            });
+            $('.occasion').change(function(){
+                let o = $(this).next().text();
+                occasion = '&occasion=';
+                occasion += o;
+            });
+            $('#filter').click(function(){
+                let min = $('.noUi-handle-lower').children('.range-label').children('span').text();
+                let max = $('.noUi-handle-upper').children('.range-label').children('span').text();
+                if(parseInt(min) > 0 || parseInt(max) < 100)
+                    price += min+'|'+max;
+                if(size.length > 0)
+                    for(let i=0;i<size.length;i++)
+                        if(size.length-i == 1)
+                            sizeString += size[i];
+                        else
+                            sizeString += size[i]+'|';
+                if(color.length > 0)
+                    for(let i=0;i<color.length;i++)
+                        if(color.length-i == 1)
+                            colorString += color[i]; 
+                        else
+                            colorString += color[i]+'|'; 
+                let url = $(location).attr('href');
+                if(url.indexOf('&size') > -1)
+                    url = url.split('&size=')[0];
+                url += sizeString + colorString + price + occasion;
+                $(location).attr('href', url);
+            });
+            $('.change').click(function(){
+                var image = $(this).attr('id');
+                var elem = $(this).parent().prev().children('img');
+                $(elem).attr('src', image);
+            });
+            $('.addtocart').click(function(){
+                var product = $(this).attr('id');
+                $.get('/cart/'+product, function(data, status){
+                    $(this).addClass('disable');
+                    var n = parseInt($('#badge').text());
+                    if(status == 'success')
+                        if(data.status == 'ok')
+                            $('#badge').text(n+1);
+                    $(this).removeClass('disable');
+                });
+            });
+        });
+    script.
+        $(document).ready(function(){
+            let url = $(location).attr('href');
+            url += '&json=true&page=';
+            let count = 1;
+            let state = true;
+            let run = false;
+            $(window).scroll(function () { 
+              if(!run)
+                if ($(window).scrollTop() >= $(document).height() - $(window).height() - 300) {
+                    run = true;
+                    if(state)
+                        $.get(url+count, function(data, status){
+                            count++;
+                            if(status == 'success'){
+                                if(data.data.length > 0){
+                                    var html = '';
+                                    var products = data.data;
+                                    for(let i=0;i<products.length;i++){
+                                        html = '';
+                                        html += '<div class="col l3 m6"><div class="card"><div class="card-image waves-effect waves-block waves-light">';
+                                        html += '<img id="color" src="'+products[i].images[0].path+'" height="300px"></div><div class="card-content">';
+                                        html += '<div class="card-title grey-text text-darken-4">'+products[i].title+'</div>';
+                                        html += '<i class="material-icons right waves-effect waves-block waves-light red-text">favorite</i>';
+                                        html += '<p style="margin-bottom:10px"><b class="blue-text">'+products[i].price+' $</b></p>';
+                                        for(let j=0;j<products[i].images.length;j++)
+                                            html += '<i id="'+products[i].images[j].path+'" class="material-icons right waves-effect waves-block waves-light change '+products[i].images[j].color+' '+products[i].images[j].color+'-text">stop</i>';
+                                        html += '</div><div class="card-action">';
+                                        html += '<a class="btn-floating btn-small waves-effect waves-light pink"><i class="material-icons">share</i></a><a id="'+products[i]._id+'" class="btn-floating btn-small waves-effect waves-light right addtocart"><i class="material-icons">shopping_cart</i></a></div></div></div>';
+                                        $('#list').append(html);
+                                    }
+                                    run = false;
+                                }
+                                else{
+                                    state = false;
+                                    $('.load').hide();
+                                }
+                            }
+                        });
+                }
+            });
+        });
+        
+block footer
+  include ../partial/footer
+
+//sizes
+//price
+//COLOR
+//OCCASION
+//style
