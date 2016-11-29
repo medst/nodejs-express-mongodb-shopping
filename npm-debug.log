@@ -7,7 +7,7 @@
 6 silly lifecycle blogapp@0.0.0~prestart: no script for prestart, continuing
 7 info lifecycle blogapp@0.0.0~start: blogapp@0.0.0
 8 verbose lifecycle blogapp@0.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle blogapp@0.0.0~start: PATH: /usr/lib/node_modules/npm/bin/node-gyp-bin:/home/mrst/Desktop/blogapp/node_modules/.bin:/usr/bin:/home/mrst/bin:/home/mrst/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
+9 verbose lifecycle blogapp@0.0.0~start: PATH: /usr/lib/node_modules/npm/bin/node-gyp-bin:/home/mrst/Desktop/blogapp/node_modules/.bin:/usr/bin:/usr/local/heroku/bin:/home/mrst/bin:/home/mrst/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
 10 verbose lifecycle blogapp@0.0.0~start: CWD: /home/mrst/Desktop/blogapp
 11 silly lifecycle blogapp@0.0.0~start: Args: [ '-c', 'node ./bin/www' ]
 12 silly lifecycle blogapp@0.0.0~start: Returned: code: 1  signal: null
