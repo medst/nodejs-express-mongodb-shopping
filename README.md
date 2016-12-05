@@ -3,7 +3,7 @@
 
 Screenshot
 
-![alt tag](https://lh3.googleusercontent.com/jGg9fgi1WV2hO1MP5j5CdosGEmf1TtBL5UE8kUV0Pnmp4zA8GrXNdGKs_ukddaYg20-y09UflBm9h6E=w1280-h661-rw)
+<img src='https://s14.postimg.org/d1fwj9q41/image.png'>
 
 ![alt tag](https://lh6.googleusercontent.com/OnTqMaPeBJ9SgLp54FuruKyYAmLoDs7gkhxHDl_s2D1fFZlJXlvb7DvMFGjvwHIg7PXV4wU9XrX1TAE=w1280-h661-rw)
 
